@@ -1181,7 +1181,7 @@ namespace entry
 	{
 		SDL_SysWMinfo wmi;
 		SDL_VERSION(&wmi.version);
-		if (!SDL_GetWindowWMInfo(s_ctx.m_window[kDefaultWindowHandle], &wmi) )
+		if (!SDL_GetWindowWMInfo(s_ctx.m_window[kDefaultWindowHandle.idx], &wmi) )
 		{
 			return bgfx::NativeWindowHandleType::Default;
 		}
