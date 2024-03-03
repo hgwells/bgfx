@@ -35,6 +35,7 @@ BX_PRAGMA_DIAGNOSTIC_POP()
 #include <bx/readerwriter.h>
 #include <tinystl/allocator.h>
 #include <tinystl/string.h>
+#include <dear-imgui/backends/imgui_impl_sdl2.h>
 
 namespace entry
 {
