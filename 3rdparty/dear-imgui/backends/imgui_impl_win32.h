@@ -17,6 +17,7 @@
 // - Introduction, links and more at the top of imgui.cpp
 
 #pragma once
+#if defined(_WIN32)
 #include <dear-imgui/imgui.h> // IMGUI_IMPL_API
 #ifndef IMGUI_DISABLE
 
@@ -50,3 +51,6 @@ IMGUI_IMPL_API float    ImGui_ImplWin32_GetDpiScaleForMonitor(void* monitor); //
 IMGUI_IMPL_API void     ImGui_ImplWin32_EnableAlphaCompositing(void* hwnd);   // HWND hwnd
 
 #endif // #ifndef IMGUI_DISABLE
+
+
+#endif // #if defined(_WIN32)
