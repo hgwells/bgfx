@@ -520,6 +520,12 @@ namespace entry
 				bx::free(allocator, data);
 			}
 
+			
+#if defined(__linux__) || defined(__APPLE__)
+			ImGui_ImplSDL2_InitForSDLRenderer(m_window[0], nullptr);
+
+#endif 
+
 			bool exit = false;
 			SDL_Event event;
 			while (!exit)
@@ -528,6 +534,9 @@ namespace entry
 
 				while (SDL_PollEvent(&event) )
 				{
+#if defined(__linux__) || defined(__APPLE__)
+					ImGui_ImplSDL2_ProcessEvent(&event);
+#endif
 					switch (event.type)
 					{
 					case SDL_QUIT:
@@ -958,6 +967,13 @@ namespace entry
 
 			while (bgfx::RenderFrame::NoContext != bgfx::renderFrame() ) {};
 			m_thread.shutdown();
+
+
+#if defined(__linux__) || defined(__APPLE__)
+			ImGui_ImplSDL2_Shutdown();
+#endif
+
+
 
 			sdlDestroyWindow(m_window[0]);
 			SDL_Quit();

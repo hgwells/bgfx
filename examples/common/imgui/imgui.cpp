@@ -11,6 +11,7 @@
 #include <dear-imgui/imgui.h>
 #include <dear-imgui/imgui_internal.h>
 #include <dear-imgui/backends/imgui_impl_win32.h>
+#include <dear-imgui/backends/imgui_impl_sdl2.h>
 
 #include "imgui.h"
 #include "../bgfx_utils.h"
@@ -486,10 +487,11 @@ struct OcornutImguiContext
 #if defined(_WIN32) || defined(_WIN64)
 		ImGui_ImplWin32_NewFrame();
 #elif  defined(__linux__)
-
+		ImGui_ImplSDL2_NewFrame();
 
 #elif defined(__APPLE__)
 
+		ImGui_ImplSDL2_NewFrame();
 
 #else
 	
