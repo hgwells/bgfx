@@ -10,11 +10,14 @@
 #include <bx/timer.h>
 #include <dear-imgui/imgui.h>
 #include <dear-imgui/imgui_internal.h>
+#include <dear-imgui/backends/imgui_impl_win32.h>
 
 #include "imgui.h"
 #include "../bgfx_utils.h"
 
-//#define USE_ENTRY 1
+#include "../entry/entry.h"
+
+#define USE_ENTRY 0
 
 #ifndef USE_ENTRY
 #	define USE_ENTRY 0
@@ -521,11 +524,51 @@ static void memFree(void* _ptr, void* _userData)
 void imguiCreate(float _fontSize, bx::AllocatorI* _allocator)
 {
 	s_ctx.create(_fontSize, _allocator);
+
+
+
+#ifdef BX_PLATFORM_WINDOWS
+	if (bgfx::getRendererType() == bgfx::RendererType::OpenGL)
+	{
+		ImGui_ImplWin32_InitForOpenGL(entry::getNativeWindowHandle(entry::kDefaultWindowHandle));
+	}
+	else
+	{
+		ImGui_ImplWin32_Init(entry::getNativeWindowHandle(entry::kDefaultWindowHandle));
+	}
+#elif (BX_PLATFORM_LINUX || BX_PLATFORM_RPI)
+
+#elif BX_PLATFORM_OSX
+
+#elif BX_PLATFORM_ANDROID
+
+#elif BX_PLATFORM_EMSCRIPTEN
+	
+#elif BX_PLATFORM_IOS
+
+#endif
+
 }
 
 void imguiDestroy()
 {
+#ifdef BX_PLATFORM_WINDOWS
+	ImGui_ImplWin32_Shutdown();
+
+#elif (BX_PLATFORM_LINUX || BX_PLATFORM_RPI)
+
+#elif BX_PLATFORM_OSX
+
+#elif BX_PLATFORM_ANDROID
+
+#elif BX_PLATFORM_EMSCRIPTEN
+	
+#elif BX_PLATFORM_IOS
+
+#endif
+
 	s_ctx.destroy();
+
 }
 
 void imguiBeginFrame(int32_t _mx, int32_t _my, uint8_t _button, int32_t _scroll, uint16_t _width, uint16_t _height, int _inputChar, bgfx::ViewId _viewId)

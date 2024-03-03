@@ -24,6 +24,7 @@
 #include <windowsx.h>
 #include <xinput.h>
 #include <shellapi.h>
+#include <dear-imgui/backends/imgui_impl_win32.h>
 
 #ifndef XINPUT_GAMEPAD_GUIDE
 #	define XINPUT_GAMEPAD_GUIDE 0x400
@@ -505,11 +506,16 @@ namespace entry
 			mte.m_argc = _argc;
 			mte.m_argv = _argv;
 
+
+
+
 			bgfx::renderFrame();
+
 
 			bx::Thread thread;
 			thread.init(mte.threadFunc, &mte);
 			m_init = true;
+
 
 			m_eventQueue.postSizeEvent(findHandle(m_hwnd[0]), m_width, m_height);
 
@@ -534,6 +540,7 @@ namespace entry
 
 			thread.shutdown();
 
+
 			DestroyWindow(m_hwnd[0]);
 
 			s_xinput.shutdown();
@@ -543,6 +550,7 @@ namespace entry
 
 		LRESULT process(HWND _hwnd, UINT _id, WPARAM _wparam, LPARAM _lparam)
 		{
+			ImGui_ImplWin32_WndProcHandler(_hwnd, _id, _wparam, _lparam);
 			if (m_init)
 			{
 				switch (_id)
