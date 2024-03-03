@@ -527,7 +527,7 @@ void imguiCreate(float _fontSize, bx::AllocatorI* _allocator)
 
 
 
-#ifdef BX_PLATFORM_WINDOWS
+#if defined(_WIN32) || defined(_WIN64)
 	if (bgfx::getRendererType() == bgfx::RendererType::OpenGL)
 	{
 		ImGui_ImplWin32_InitForOpenGL(entry::getNativeWindowHandle(entry::kDefaultWindowHandle));
@@ -536,15 +536,14 @@ void imguiCreate(float _fontSize, bx::AllocatorI* _allocator)
 	{
 		ImGui_ImplWin32_Init(entry::getNativeWindowHandle(entry::kDefaultWindowHandle));
 	}
-#elif (BX_PLATFORM_LINUX || BX_PLATFORM_RPI)
+#elif  defined(__linux__)
 
-#elif BX_PLATFORM_OSX
 
-#elif BX_PLATFORM_ANDROID
+#elif defined(__APPLE__)
 
-#elif BX_PLATFORM_EMSCRIPTEN
+
+#else
 	
-#elif BX_PLATFORM_IOS
 
 #endif
 
@@ -552,18 +551,16 @@ void imguiCreate(float _fontSize, bx::AllocatorI* _allocator)
 
 void imguiDestroy()
 {
-#ifdef BX_PLATFORM_WINDOWS
+#if defined(_WIN32) || defined(_WIN64)
 	ImGui_ImplWin32_Shutdown();
 
-#elif (BX_PLATFORM_LINUX || BX_PLATFORM_RPI)
+#elif  defined(__linux__)
 
-#elif BX_PLATFORM_OSX
 
-#elif BX_PLATFORM_ANDROID
+#elif defined(__APPLE__)
 
-#elif BX_PLATFORM_EMSCRIPTEN
-	
-#elif BX_PLATFORM_IOS
+
+#else
 
 #endif
 
