@@ -479,6 +479,23 @@ struct OcornutImguiContext
 		}
 #endif // USE_ENTRY
 
+
+
+
+
+#if defined(_WIN32) || defined(_WIN64)
+		ImGui_ImplWin32_NewFrame();
+#elif  defined(__linux__)
+
+
+#elif defined(__APPLE__)
+
+
+#else
+	
+
+#endif
+
 		ImGui::NewFrame();
 
 		ImGuizmo::BeginFrame();

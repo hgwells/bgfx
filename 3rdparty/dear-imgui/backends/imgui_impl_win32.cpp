@@ -16,7 +16,7 @@
 // - Documentation        https://dearimgui.com/docs (same as your local docs/ folder).
 // - Introduction, links and more at the top of imgui.cpp
 
-#if defined(_WIN32)
+#if defined(_WIN32) || defined(_WIN64)
 #include <dear-imgui/imgui.h> 
 #ifndef IMGUI_DISABLE
 #include "imgui_impl_win32.h"

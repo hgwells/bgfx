@@ -17,7 +17,7 @@
 // - Introduction, links and more at the top of imgui.cpp
 
 #pragma once
-#if defined(_WIN32)
+#if defined(_WIN32) || defined(_WIN64)
 #include <dear-imgui/imgui.h> // IMGUI_IMPL_API
 #ifndef IMGUI_DISABLE
 
