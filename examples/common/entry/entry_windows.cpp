@@ -34,6 +34,9 @@
 #	define XINPUT_DLL_A "xinput.dll"
 #endif // XINPUT_DLL_A
 
+// Forward declare message handler from imgui_impl_win32.cpp
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 namespace entry
 {
 	typedef tinystl::vector<WCHAR> WSTRING;

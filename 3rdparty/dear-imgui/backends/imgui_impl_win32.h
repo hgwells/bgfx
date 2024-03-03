@@ -17,15 +17,7 @@
 // - Introduction, links and more at the top of imgui.cpp
 
 #pragma once
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN
-#endif
-#include <dear-imgui/imgui.h>      // IMGUI_IMPL_API
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN
-#endif
-#include <windows.h>
-#include <windowsx.h> // GET_X_LPARAM(), GET_Y_LPARAM()
+#include "imgui.h"      // IMGUI_IMPL_API
 #ifndef IMGUI_DISABLE
 
 IMGUI_IMPL_API bool     ImGui_ImplWin32_Init(void* hwnd);
@@ -38,7 +30,9 @@ IMGUI_IMPL_API void     ImGui_ImplWin32_NewFrame();
 // - You should COPY the line below into your .cpp code to forward declare the function and then you can call it.
 // - Call from your application's message handler. Keep calling your message handler unless this function returns TRUE.
 
-IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+#if 0
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+#endif
 
 // DPI-related helpers (optional)
 // - Use to enable DPI awareness without having to create an application manifest.
