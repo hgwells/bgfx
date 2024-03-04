@@ -557,11 +557,11 @@ void imguiCreate(float _fontSize, bx::AllocatorI* _allocator)
 	}
 #elif  defined(__linux__)
 
-	ImGui_ImplSDL2_InitForSDLRenderer(entry::getNativeWindowHandle(entry::kDefaultWindowHandle), nullptr);
+	ImGui_ImplSDL2_InitForSDLRenderer(entry::kDefaultWindowHandle, nullptr);
 
 #elif defined(__APPLE__)
 
-	ImGui_ImplSDL2_InitForSDLRenderer(entry::getNativeWindowHandle(entry::kDefaultWindowHandle), nullptr);
+	ImGui_ImplSDL2_InitForSDLRenderer(entry::kDefaultWindowHandle, nullptr);
 
 #else
 	
