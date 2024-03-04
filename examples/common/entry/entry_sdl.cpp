@@ -522,10 +522,6 @@ namespace entry
 			}
 
 			
-#if defined(__linux__) || defined(__APPLE__)
-			ImGui_ImplSDL2_InitForSDLRenderer(m_window[0], nullptr);
-
-#endif 
 
 			bool exit = false;
 			SDL_Event event;
