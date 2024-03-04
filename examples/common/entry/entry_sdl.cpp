@@ -498,6 +498,8 @@ namespace entry
 
 			SDL_EventState(SDL_DROPFILE, SDL_ENABLE);
 
+            ImGui_SetWindowHandle(m_window[0]);
+
 			bx::FileReaderI* reader = NULL;
 			while (NULL == reader)
 			{
@@ -964,13 +966,6 @@ namespace entry
 
 			while (bgfx::RenderFrame::NoContext != bgfx::renderFrame() ) {};
 			m_thread.shutdown();
-
-
-#if defined(__linux__) || defined(__APPLE__)
-			ImGui_ImplSDL2_Shutdown();
-#endif
-
-
 
 			sdlDestroyWindow(m_window[0]);
 			SDL_Quit();

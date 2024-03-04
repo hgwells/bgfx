@@ -32,6 +32,11 @@ struct SDL_Renderer;
 struct _SDL_GameController;
 typedef union SDL_Event SDL_Event;
 
+void ImGuiInitialized();
+void ImGuiReleased();
+bool ImGui_IsImGuiReady();
+void ImGui_SetWindowHandle(SDL_Window* window);
+SDL_Window*  ImGui_GetWindowHandle();
 IMGUI_IMPL_API bool     ImGui_ImplSDL2_InitForOpenGL(SDL_Window* window, void* sdl_gl_context);
 IMGUI_IMPL_API bool     ImGui_ImplSDL2_InitForVulkan(SDL_Window* window);
 IMGUI_IMPL_API bool     ImGui_ImplSDL2_InitForD3D(SDL_Window* window);

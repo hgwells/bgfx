@@ -90,8 +90,8 @@
 #endif
 
 // SDL
-#include <SDL.h>
-#include <SDL_syswm.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_syswm.h>
 #if defined(__APPLE__)
 #include <TargetConditionals.h>
 #endif
@@ -308,6 +308,8 @@ static void ImGui_ImplSDL2_UpdateKeyModifiers(SDL_Keymod sdl_key_mods)
 // If you have multiple SDL events and some of them are not meant to be used by dear imgui, you may need to filter events based on their windowID field.
 bool ImGui_ImplSDL2_ProcessEvent(const SDL_Event* event)
 {
+	if (ImGui_IsImGuiReady() == false)
+		return false;
     ImGuiIO& io = ImGui::GetIO();
     ImGui_ImplSDL2_Data* bd = ImGui_ImplSDL2_GetBackendData();
 
@@ -482,6 +484,20 @@ static bool ImGui_ImplSDL2_Init(SDL_Window* window, SDL_Renderer* renderer)
 #endif
 
     return true;
+}
+
+bool gImGuiReady = false;
+void ImGuiInitialized(){gImGuiReady = true;}
+void ImGuiReleased(){gImGuiReady = false;}
+bool ImGui_IsImGuiReady() {return gImGuiReady;} 
+SDL_Window* gSDLWindow = nullptr;
+void ImGui_SetWindowHandle(SDL_Window* window)
+{
+	gSDLWindow = window;	
+}
+SDL_Window*  ImGui_GetWindowHandle()
+{
+	return gSDLWindow;
 }
 
 bool ImGui_ImplSDL2_InitForOpenGL(SDL_Window* window, void* sdl_gl_context)
