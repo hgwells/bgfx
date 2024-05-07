@@ -23,7 +23,7 @@ void cameraDestroy();
 
 ///
 void cameraSetPosition(const bx::Vec3& _pos);
-
+void cameraSetPositionAndDirection(const bx::Vec3& _pos, const bx::Vec3& _direction);
 ///
 void cameraSetHorizontalAngle(float _horizontalAngle);
 
@@ -42,6 +42,7 @@ bx::Vec3 cameraGetPosition();
 ///
 bx::Vec3 cameraGetAt();
 
+void cameraReset(entry::MouseState& mouseState);
 ///
 void cameraUpdate(float _deltaTime, const entry::MouseState& _mouseState, bool _reset = false);
 

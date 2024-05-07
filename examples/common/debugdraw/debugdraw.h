@@ -120,6 +120,8 @@ struct DebugDrawEncoder
 	///
 	void close();
 
+	void clear();
+
 	///
 	void draw(const bx::Aabb& _aabb);
 

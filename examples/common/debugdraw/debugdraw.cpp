@@ -1385,6 +1385,13 @@ struct DebugDrawEncoderImpl
 		m_state = State::None;
 	}
 
+
+	void clear()
+	{
+		
+		m_encoder->touch(0);
+	}
+
 	void draw(const bx::Aabb& _aabb)
 	{
 		const Attrib& attrib = m_attrib[m_stack];
@@ -2425,6 +2432,11 @@ void DebugDrawEncoder::lineTo(const bx::Vec3& _pos)
 void DebugDrawEncoder::close()
 {
 	DEBUG_DRAW_ENCODER(close() );
+}
+
+void DebugDrawEncoder::clear()
+{
+	DEBUG_DRAW_ENCODER(clear() );
 }
 
 void DebugDrawEncoder::draw(const bx::Aabb& _aabb)
